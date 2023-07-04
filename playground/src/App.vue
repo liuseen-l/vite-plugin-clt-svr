@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { on, send } from '../../src/utils'
 
 const count = ref(0)
 function add() {
-  import.meta.hot?.send('callback_$1', count.value)
+  send('callback_$1', count.value)
 }
 
-import.meta.hot?.on('restart', (v) => {
+on('restart', (v) => {
   count.value = v
 })
 </script>

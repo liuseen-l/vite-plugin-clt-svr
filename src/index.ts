@@ -26,3 +26,5 @@ export default (options?: Options): PluginOption => {
     },
   }
 }
+
+export * from './utils'
