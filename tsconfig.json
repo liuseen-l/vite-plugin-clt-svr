@@ -27,10 +27,6 @@
     "noUnusedParameters": true,
   },
   "include": [
-    "playground/src/**/*.ts", 
-    "playground/src/**/*.d.ts", 
-    "playground/src/**/*.tsx",
-    "playground/src/**/*.vue",
     "src/**/*.ts"
   ],
 }
