@@ -36,6 +36,8 @@ export default defineConfig({
 })
 ```
 
+At Vue file
+
 ```vue
 <script lang="ts" setup>
 import { ref } from 'vue'
