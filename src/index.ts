@@ -1,9 +1,6 @@
 import type { PluginOption, HMRPayload } from 'vite'
 interface Options {
-  [key: string]: {
-    on?: (...argus: any[]) => unknown
-    close?: () => void
-  }
+  [key: string]: (...argus: any[]) => unknown
 }
 
 export default (options?: Options): PluginOption => {
@@ -13,12 +10,12 @@ export default (options?: Options): PluginOption => {
     configureServer(server) {
       if (options) {
         Object.keys(options).forEach(key => {
-          const serverFn = options[key].on
+          const serverFn = options[key]
           if (serverFn) {
             server.ws.on(key, (...argus) => {
               serverFn(...argus, {
                 send: (arg: HMRPayload) => {
-                  server.ws.send(arg)
+                  server.ws.send(key, arg)
                 },
               });
             })

@@ -1,18 +1,60 @@
-# Vue 3 + TypeScript + Vite
+# vite-plugin-clr-svr
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![Test Status](https://img.shields.io/github/actions/workflow/status/Menci/vite-plugin-wasm/test.yaml?branch=main&style=flat-square)](https://github.com/Menci/vite-plugin-wasm/actions?query=workflow%3ATest)
+[![npm](https://img.shields.io/npm/v/vite-plugin-wasm?style=flat-square)](https://www.npmjs.com/package/vite-plugin-wasm)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![License](https://img.shields.io/github/license/Menci/vite-plugin-wasm?style=flat-square)](LICENSE)
 
-## Recommended IDE Setup
+Allow local `server` to communicate with `client`.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 📦 Install
 
-## Type Support For `.vue` Imports in TS
+Now this plugin supports both Vite 2.x and 3.x. Just install it:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```bash
+pnpm add -D vite-plugin-clr-svr
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 🦄 Usage
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+```typescript
+import clrSvr from "vite-plugin-clr-svr";
+
+export default defineConfig({
+  plugins: [
+    clrSvr({
+      callback_$1:(count, option ) => {
+         if(count === 10) {
+            option.send(0)
+         }
+      },
+      callback_$2:(...) => {...},
+    }),
+  ]
+});
+```
+
+```vue
+<template>
+   <div>{{count}}<div/>
+   <button type='button' @click='add'>click</button>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+function add () {
+   import.meta.hot.send('callback_$1',count.value)
+}
+
+import.meta.hot.on('restart',() => {
+   count.value = 0
+})
+</script>
+```
+
+## 📄 License
+
+[MIT License](https://github.com/vite-plugins/vite-plugin-clt-svr/blob/main/LICENSE) © 2019-PRESENT [LiuSeen](https://github.com/liuseen-l)
