@@ -18,41 +18,43 @@ pnpm add -D vite-plugin-clr-svr
 
 ## 🦄 Usage
 
+Let's use a VUE project as an example
 
 ```typescript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 import clrSvr from "vite-plugin-clr-svr";
 
 export default defineConfig({
-  plugins: [
-    clrSvr({
-      callback_$1:(count, option ) => {
-         if(count === 10) {
-            option.send(0)
-         }
-      },
-      callback_$2:(...) => {...},
-    }),
-  ]
-});
+  plugins: [vue(), clr({
+    callback_$1: (count, option) => {
+      if (count === 10)
+        return option.send('restart', 0)
+      option.send('restart', count + 1)
+    },
+  })],
+})
 ```
 
 ```vue
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
+import { on, send } from 'vite-plugin-clr-svr'
 
 const count = ref(0)
 function add() {
-  import.meta.hot?.send('callback_$1', count.value)
+  send('callback_$1', count.value)
 }
 
-import.meta.hot?.on('restart', () => {
-  count.value = 0
+on('restart', (v) => {
+  count.value = v
 })
 </script>
 
 <template>
   <div>
-    {{ count }}<div />
+    {{ count }}
+    <div />
     <button type="button" @click="add">
       click
     </button>
