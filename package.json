@@ -3,8 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.6.5",
+  "description": "Allow communication between local services and clients",
   "author": "liuseen-l",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vite-plugins/vite-plugin-clt-svr"
+  },
+  "bugs": {
+    "url": "https://github.com/vite-plugins/vite-plugin-clt-svr/issues"
+  },
   "keywords": [
     "vite-plugin",
     "client",
