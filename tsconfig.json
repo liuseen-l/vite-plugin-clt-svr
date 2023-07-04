@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "temp",
     "sourceMap": false,
     "target": "esnext",
@@ -18,15 +17,14 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "rootDir": ".",
     "lib": [
       "esnext",
       "dom",
       "dom.iterable"
     ],
-    "noUnusedParameters": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src/**/*.ts"
-  ],
+  ]
 }

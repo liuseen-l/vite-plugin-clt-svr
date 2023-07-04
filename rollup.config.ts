@@ -1,7 +1,7 @@
-import { defineConfig } from 'rollup'
 import path from 'node:path'
-import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
+import { defineConfig } from 'rollup'
+import typescript from '@rollup/plugin-typescript'
+import dts from 'rollup-plugin-dts'
 
 export default defineConfig([
   {
@@ -9,14 +9,14 @@ export default defineConfig([
     output: [
       {
         file: path.resolve('./dist/index.cjs'),
-        format: "cjs"
+        format: 'cjs',
       },
       {
         file: path.resolve('./dist/index.mjs'),
-        format: "es"
-      }
+        format: 'es',
+      },
     ],
-    plugins: [typescript()]
+    plugins: [typescript()],
   },
   {
     input: './src/index.ts',
@@ -24,6 +24,6 @@ export default defineConfig([
     output: {
       format: 'esm',
       file: 'dist/index.d.ts',
-    }
-  }
+    },
+  },
 ])

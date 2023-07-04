@@ -1,12 +1,8 @@
 {
   "name": "vite-plugin-clt-svr",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.6.5",
-  "version": "0.0.1",
-  "scripts": {
-    "build": "rollup -c rollup.config.ts --configPlugin typescript",
-    "prepare": "husky install"
-  },
   "author": "liuseen-l",
   "license": "MIT",
   "files": [
@@ -14,6 +10,10 @@
   ],
   "engines": {
     "node": ">=14"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "vite": "^3.0.0-0 || ^4.0.0-0"

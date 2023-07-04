@@ -37,22 +37,27 @@ export default defineConfig({
 ```
 
 ```vue
-<template>
-   <div>{{count}}<div/>
-   <button type='button' @click='add'>click</button>
-</template>
-
 <script setup>
 import { ref } from 'vue'
+
 const count = ref(0)
-function add () {
-   import.meta.hot.send('callback_$1',count.value)
+function add() {
+  import.meta.hot?.send('callback_$1', count.value)
 }
 
-import.meta.hot.on('restart',() => {
-   count.value = 0
+import.meta.hot?.on('restart', () => {
+  count.value = 0
 })
 </script>
+
+<template>
+  <div>
+    {{ count }}<div />
+    <button type="button" @click="add">
+      click
+    </button>
+  </div>
+</template>
 ```
 
 ## 📄 License
