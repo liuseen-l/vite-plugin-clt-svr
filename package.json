@@ -36,15 +36,17 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "build": "nr clear && rollup -c rollup.config.ts --configPlugin typescript",
+    "clear":"rimraf dist",
     "prepare": "husky install",
-    "changelog":"conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "peerDependencies": {
     "vite": "^3.0.0-0 || ^4.0.0-0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.7",
+    "@antfu/ni": "^0.21.4",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/node": "^20.3.3",
@@ -52,6 +54,7 @@
     "eslint": "^8.44.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
+    "rimraf": "^5.0.1",
     "rollup": "^3.26.0",
     "rollup-plugin-dts": "^5.3.0",
     "typescript": "^5.0.2",
