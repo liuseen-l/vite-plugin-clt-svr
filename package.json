@@ -37,8 +37,9 @@
   },
   "scripts": {
     "build": "nr cleanup && rollup -c rollup.config.ts --configPlugin typescript",
-    "cleanup":"rimraf dist",
+    "cleanup": "rimraf dist",
     "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "play": "nr -C playground dev",
     "prepare": "husky install",
     "release": "bumpp && nr changelog && npm publish",
