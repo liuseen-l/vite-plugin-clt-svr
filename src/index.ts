@@ -6,7 +6,7 @@ interface Options {
 
 export default (options?: Options): PluginOption => {
   return {
-    name: 'vite-plugin-server-handler',
+    name: 'vite-plugin-clr-svr',
     apply: 'serve',
     configureServer(server) {
       if (options) {
