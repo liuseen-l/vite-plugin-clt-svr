@@ -38,7 +38,10 @@
   "scripts": {
     "build": "nr clear && rollup -c rollup.config.ts --configPlugin typescript",
     "clear":"rimraf dist",
+    "lint": "eslint .",
+    "play": "nr -C playground dev",
     "prepare": "husky install",
+    "release": "bumpp && nr changelog && npm publish",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "peerDependencies": {
