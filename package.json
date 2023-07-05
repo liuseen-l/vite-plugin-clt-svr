@@ -37,7 +37,8 @@
   },
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "changelog":"conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "peerDependencies": {
     "vite": "^3.0.0-0 || ^4.0.0-0"
