@@ -36,8 +36,8 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "nr clear && rollup -c rollup.config.ts --configPlugin typescript",
-    "clear":"rimraf dist",
+    "build": "nr cleanup && rollup -c rollup.config.ts --configPlugin typescript",
+    "cleanup":"rimraf dist",
     "lint": "eslint .",
     "play": "nr -C playground dev",
     "prepare": "husky install",
