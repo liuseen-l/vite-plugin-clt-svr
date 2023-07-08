@@ -16,7 +16,8 @@
   "keywords": [
     "vite-plugin",
     "client",
-    "server"
+    "server",
+    "vite-plugin-clt-svr"
   ],
   "exports": {
     ".": {
